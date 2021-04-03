@@ -200,7 +200,7 @@ class Avatar
         return $this->image->save($path, $quality);
     }
 
-    public function toSvg()
+    public function toSvg($customWidth=null,$customHeight)
     {
         $this->buildInitial();
 
@@ -208,6 +208,11 @@ class Avatar
         $width = $height = $this->width - $this->borderSize;
         $radius = ($this->width - $this->borderSize) / 2;
         $center = $this->width / 2;
+        
+        if(!is_null($customWidth))
+            $this->width = $customWidth;
+        if(!is_null($customHeight))
+            $this->height = $customHeight;
 
         $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="'.$this->width.'" height="'.$this->height.'" viewBox="0 0 '.$this->width.' '.$this->height.'">';
 
