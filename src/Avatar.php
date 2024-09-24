@@ -422,7 +422,7 @@ class Avatar
         $array = array_values($array);
 
         $name = $this->name;
-        if (strlen($name) === 0) {
+        if (blank($name) || strlen($name) === 0) {
             $name = chr(rand(65, 90));
         }
 
